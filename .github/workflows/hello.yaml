@@ -8,17 +8,30 @@ jobs:
   build:
     name: 'Build Software'
     runs-on: ubuntu-latest
+
     # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
         shell: bash
-
-    runs-on: ubuntu-latest 
     steps: 
       - name: checkout code
+        id: checkout
         uses: actions/checkout@v5
+        
       - name: Welcome
+        if: steps.checkout.outputs.changed == 'true'
         run: | 
           echo "Hello Pereira Tech Talks Members"
           env
-      
+  test:
+    needs: build
+    name: 'Test Software'
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout code
+        id: checkout
+        uses: actions/checkout@v5
+      - name: Welcome
+        if: steps.checkout.outputs.changed == 'true'
+        run: | 
+          echo "Another Job"
