@@ -5,7 +5,14 @@ on :
   workflow_dispatch:
 
 jobs: 
-  build: 
+  build:
+    name: 'Build Software'
+    runs-on: ubuntu-latest
+    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
+    defaults:
+      run:
+        shell: bash
+
     runs-on: ubuntu-latest 
     steps: 
       - name: checkout code
@@ -14,4 +21,4 @@ jobs:
         run: | 
           echo "Hello Pereira Tech Talks Members"
           env
-        
+      
