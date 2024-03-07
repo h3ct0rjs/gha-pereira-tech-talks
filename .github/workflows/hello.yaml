@@ -1,0 +1,17 @@
+name: Hello Pereira Tech Talk 
+run-name: PereiraTechTalk Workflow ${{ github.run_id }}
+on :
+  push:
+  workflow_dispatch:
+
+jobs: 
+  build: 
+    runs-on: ubuntu-latest 
+    steps: 
+      - name: checkout code
+        uses: actions/checkout@v5
+      - name: Welcome
+        run: | 
+          echo "Hello Pereira Tech Talks Members"
+          env
+        
