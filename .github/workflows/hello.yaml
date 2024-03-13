@@ -37,7 +37,7 @@ jobs:
           echo "Another Job"
   unit-test:
     needs: build
-    name: 'Test Software'
+    name: 'Unit Test Software'
     runs-on: ubuntu-latest
     steps: 
       - name: checkout code
