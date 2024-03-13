@@ -16,7 +16,7 @@ jobs:
     steps: 
       - name: checkout code
         id: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
         
       - name: Welcome
         if: steps.checkout.outcome == 'success'
@@ -30,7 +30,7 @@ jobs:
     steps: 
       - name: checkout code
         id: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
       - name: Welcome
         if: steps.checkout.outputs.changed == 'true'
         run: | 
@@ -45,7 +45,7 @@ jobs:
     steps:
       - name: checkout code
         id: checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v4
       - name: Welcome
         if: steps.checkout.outputs.changed == 'true'
         run: |
