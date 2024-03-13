@@ -35,8 +35,20 @@ jobs:
         if: steps.checkout.outputs.changed == 'true'
         run: | 
           echo "Another Job"
+  unit-test:
+    needs: build
+    name: 'Test Software'
+    runs-on: ubuntu-latest
+    steps: 
+      - name: checkout code
+        id: checkout
+        uses: actions/checkout@v4
+      - name: Welcome
+        if: steps.checkout.outputs.changed == 'true'
+        run: | 
+          echo "Another Job"
   deploy:
-    needs: [build, test]
+    needs: [build, test, unit-test]
     name: 'Deploying Software'
     runs-on: ubuntu-latest
     defaults:
